@@ -27,7 +27,7 @@
 			<string>Gary-Ghayrat.Twitter</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>twitterapp</string>
+				<string>mytwitterapp</string>
 			</array>
 		</dict>
 	</array>
