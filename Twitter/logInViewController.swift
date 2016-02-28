@@ -12,6 +12,18 @@ import BDBOAuth1Manager
 
 class logInViewController: UIViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
     @IBAction func onLoginButton(sender: AnyObject) {
         TwitterClient.sharedInstance.login({ () -> () in
 //                print("I've logged in!")
@@ -22,17 +34,7 @@ class logInViewController: UIViewController {
         }        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation

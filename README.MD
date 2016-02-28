@@ -1,18 +1,18 @@
 # Project 4 - Twitter
 
-**Name of your app** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
+Twitter is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **X** hours spent in total
+Time spent: 8 hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [ ] User can sign in using OAuth login flow
-- [ ] User can view last 20 tweets from their home timeline
-- [ ] The current signed in user will be persisted across restarts
-- [ ] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
-- [ ] Retweeting and favoriting should increment the retweet and favorite count.
+- [Y] User can sign in using OAuth login flow
+- [N] User can view last 20 tweets from their home timeline
+- [Y] The current signed in user will be persisted across restarts
+- [N] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
+- [N] Retweeting and favoriting should increment the retweet and favorite count.
 
 The following **optional** features are implemented:
 
