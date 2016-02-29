@@ -10,6 +10,7 @@ import UIKit
 
 class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]!
     
@@ -19,20 +20,19 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 120
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 120
 
-        TwitterClient.sharedInstance.homeTimeLine({ (tweets: [Tweet]) -> () in
+        TwitterClient.sharedInstance.homeTimeLine({ (tweets:[Tweet]) -> () in
             self.tweets = tweets
-            
             for tweet in tweets {
+               self.tableView.reloadData()
                 print(tweet.text)
+                self.tableView.reloadData()
             }
-        }, failure: { (error: NSError) -> () in
-                    print(error.localizedDescription)
-        })
-        
-        // Do any additional setup after loading the view.
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,6 +10,7 @@ import UIKit
 
 class TweetCell: UITableViewCell {
 
+    @IBOutlet weak var actualNameLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
@@ -31,6 +32,7 @@ class TweetCell: UITableViewCell {
             } else {
                 profileImage.image = UIImage(named: "blue_logo.png")
             }
+            actualNameLabel.text = tweet.user!.name as? String
             nameLabel.text = tweet.user?.name as? String
             nameLabel.text = "@\(tweet.user!.screenname!)"
             tweetLabel.text = tweet.text as? String
