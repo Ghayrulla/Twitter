@@ -34,7 +34,7 @@ class TweetCell: UITableViewCell {
             }
             actualNameLabel.text = tweet.user!.name as? String
             nameLabel.text = tweet.user?.name as? String
-            nameLabel.text = "@\(tweet.user!.screenname!)"
+            nameLabel.text = "@\(tweet.user!.screenName!)"
             tweetLabel.text = tweet.text as? String
             timeStamp.text = tweet.timeSince
             retweetCountLabel.text = String(tweet.retweetCount)
@@ -65,15 +65,31 @@ class TweetCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func retweetButton(sender: AnyObject) {
-        print("retweet clicked")
-//        self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed"), forState: UIControlState.Normal)
+        let id = tweet.id
+        
+        //now send the request
+        TwitterClient.sharedInstance.retweet(id!, success: { (tweet:Tweet) -> () in
+            print("successful retweet!")
+            print(tweet.text)
+            }) { (error:NSError) -> () in
+                print("error with retweet")
+                print(error.localizedDescription)
+        }
         
         self.retweetCountLabel.text = String(self.tweet.retweetCount + 1)
     }
     @IBAction func favoriteButton(sender: AnyObject) {
-        print("favorite clicked")
+        let id = tweet.id
         
-//        self.favoriteButton.setImage(UIImage(named: "like-action-on-pressed"), forState: UIControlState.Normal)
+        //now send the request
+        TwitterClient.sharedInstance.favorite(id!, success: { (tweet:Tweet) -> () in
+            print("successful favorite!")
+            print(tweet.text)
+            }) { (error:NSError) -> () in
+                print("error with favorite")
+                print(error.localizedDescription)
+        }
+
         self.favoriteCountLabel.text = String(self.tweet.favoritesCount + 1)
     }
 

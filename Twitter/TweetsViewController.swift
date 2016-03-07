@@ -63,6 +63,24 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func onLogoutButton(sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
     }
+    @IBAction func MeButton(sender: AnyObject) {
+    }
+    @IBAction func ComposeButton(sender: AnyObject) {
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "replyCompose") {
+            let vc = segue.destinationViewController as! ComposeViewController
+            vc.user = User.currentUser
+            vc.inReplyTo = tweet!.id!
+            vc.replyUserName = tweet!.user!.screenname!
+        }
+        else {
+            let vc = segue.destinationViewController as! UserViewController
+            vc.user = tweet!.user
+        }
+        
+    }
     /*
     // MARK: - Navigation
 
