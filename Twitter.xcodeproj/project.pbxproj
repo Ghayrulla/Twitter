@@ -20,7 +20,7 @@
 		CDC827DE1C836E4800D16F85 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC827DD1C836E4800D16F85 /* TweetsViewController.swift */; };
 		CDF8FBB41C8C7D98009A4340 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8FBB31C8C7D98009A4340 /* DetailViewController.swift */; };
 		CDF8FBB61C8C8F5F009A4340 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8FBB51C8C8F5F009A4340 /* ComposeViewController.swift */; };
-		CDF8FBBA1C8C98DE009A4340 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8FBB91C8C98DE009A4340 /* ProfileTableViewController.swift */; };
+		CDF8FBBC1C8E68A2009A4340 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF8FBBB1C8E68A2009A4340 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		CDC827DD1C836E4800D16F85 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		CDF8FBB31C8C7D98009A4340 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CDF8FBB51C8C8F5F009A4340 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
-		CDF8FBB91C8C98DE009A4340 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		CDF8FBBB1C8E68A2009A4340 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 				CD93371E1C83924C0025EAB3 /* TweetCell.swift */,
 				CDF8FBB31C8C7D98009A4340 /* DetailViewController.swift */,
 				CDF8FBB51C8C8F5F009A4340 /* ComposeViewController.swift */,
-				CDF8FBB91C8C98DE009A4340 /* ProfileTableViewController.swift */,
+				CDF8FBBB1C8E68A2009A4340 /* ProfileViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -265,7 +265,7 @@
 				CDBFC43C1C7BE0C900A3B69D /* logInViewController.swift in Sources */,
 				CDC827DE1C836E4800D16F85 /* TweetsViewController.swift in Sources */,
 				CDC827DC1C83612100D16F85 /* TwitterClient.swift in Sources */,
-				CDF8FBBA1C8C98DE009A4340 /* ProfileTableViewController.swift in Sources */,
+				CDF8FBBC1C8E68A2009A4340 /* ProfileViewController.swift in Sources */,
 				CD3736E41C7BDD7C00F66FCD /* AppDelegate.swift in Sources */,
 				CD93371F1C83924C0025EAB3 /* TweetCell.swift in Sources */,
 				CDF8FBB41C8C7D98009A4340 /* DetailViewController.swift in Sources */,
