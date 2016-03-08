@@ -33,6 +33,17 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
+        backgroundImage.setImageWithURL(user!.bannerURL!)
+        profileImage.setImageWithURL(user!.profileUrl!)
+        nameLabel.text = user!.name as? String
+        userNameLabel.text = "@\(user!.screenName!)"
+        nTweet.text = String(user!.tweetsCount)
+        nFollowing.text = String(user!.followingCount)
+        nFollowers.text = String(user!.followerCount)
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        
         TwitterClient.sharedInstance.homeTimeLine({ (tweets:[Tweet]) -> () in
             self.tweets = tweets
             for tweet in tweets {
@@ -43,8 +54,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
-        
-        userNameLabel.text = tweet.user?.name as? String
+   
+   /*     userNameLabel.text = tweet.user?.name as? String
         userNameLabel.text = "@\(tweet.user!.screenName!)"
         if (tweet.user?.profileUrl != nil) {
             profileImage.setImageWithURL((tweet.user?.profileUrl)!)
@@ -52,10 +63,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             profileImage.image = UIImage(named: "blue_logo.png")
         }
         nameLabel.text = tweet.user!.name as? String
-        //                nameLabel.text = tweet.user?.name as? String
-        //                nameLabel.text = "@\(tweet.user!.screenName!)"
+        
         tweetLabel.text = tweet.text as? String
-        // Do any additional setup after loading the view.
+     */
     }
 
     override func didReceiveMemoryWarning() {

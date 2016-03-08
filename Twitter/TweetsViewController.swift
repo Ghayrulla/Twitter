@@ -13,7 +13,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]!
-    var movies: [NSDictionary]?
+//    var movies: [NSDictionary]?
     override func viewDidLoad() {
         super.viewDidLoad()
         
