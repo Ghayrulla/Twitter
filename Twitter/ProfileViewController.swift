@@ -66,6 +66,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         tweetLabel.text = tweet.text as? String
      */
+        TwitterClient.sharedInstance.userTimeline(user!.screenName! as String, success: { (tweets: [Tweet]) -> () in
+            self.tweets = tweets
+            print(self.tweets)
+            self.tableView.reloadData()
+            }) { (error:NSError) -> () in
+                print("error")
+        }
     }
 
     override func didReceiveMemoryWarning() {

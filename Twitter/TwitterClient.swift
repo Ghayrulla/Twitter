@@ -122,6 +122,17 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    func userTimeline(userID: String, success: ([Tweet]) -> (), failure: (NSError) -> ()) {
+        let params = ["screen_name": userID] as NSDictionary
+        GET("1.1/statuses/user_timeline.json", parameters: params, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
+            success(tweets)
+            }, failure: { (task: NSURLSessionDataTask?, error:NSError) -> Void in
+                failure(error)
+            }
+        )
+    }
+    
     func currentAccount(success: (User) -> (), failure: (NSError) -> ()) {
         GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
             print("account: \(response)")
@@ -134,6 +145,14 @@ class TwitterClient: BDBOAuth1SessionManager {
             }, failure:  { (task: NSURLSessionDataTask?, error: NSError) -> Void in
                 failure(error)
         })
+    }
+    
+    func compose(params: NSDictionary, success: ()->()) {
+        POST("1.1/statuses/update.json", parameters: params, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            success()
+            }) { (task:NSURLSessionDataTask?, error: NSError) -> Void in
+                print("error \(error.localizedDescription)")
+        }
     }
     
 }

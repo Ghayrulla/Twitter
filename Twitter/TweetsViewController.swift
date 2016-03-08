@@ -14,6 +14,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]!
 //    var movies: [NSDictionary]?
+    var refreshControl: UIRefreshControl!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +73,32 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func ComposeButton(sender: AnyObject) {
     }
     
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+    }
+    
+    func onRefresh() {
+        delay(2, closure: {
+            TwitterClient.sharedInstance.homeTimeLine({ (tweets:[Tweet]) -> () in
+                self.tweets = tweets
+                for tweet in tweets {
+                    self.tableView.reloadData()
+                    print(tweet.text)
+                    self.tableView.reloadData()
+                }
+                }) { (error: NSError) -> () in
+                    print(error.localizedDescription)
+            }
+            self.refreshControl.endRefreshing()
+            self.tableView.reloadData()
+        })
+    }
+    
 
     
     // MARK: - Navigation
@@ -75,12 +106,20 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("segue called")
+        if(segue.identifier == "gotoCompose") {
+            let vc = segue.destinationViewController as! ComposeViewController
+            //            let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
+            //            let tweet = tweets?[indexPath!.row]
+            vc.user = User.currentUser
+        }
+        else {
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPathForCell(cell)
         let tweet = tweets![indexPath!.row]
         
         let detailViewController = segue.destinationViewController as! DetailViewController
         detailViewController.tweet = tweet
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

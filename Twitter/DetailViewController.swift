@@ -20,6 +20,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nFavorites: UILabel!
     @IBOutlet weak var favorite: UILabel!
     
+    var user : User?
+    var inReplyTo : String?
+
+    
     let profileTap = UITapGestureRecognizer()
     
     var tweet: Tweet!
@@ -53,9 +57,12 @@ class DetailViewController: UIViewController {
         profileTap.addTarget(self, action: "gotoProfile")
         profileImage.userInteractionEnabled = true
         profileImage.addGestureRecognizer(profileTap)
+        
+
+
+
     }
     @IBAction func ReplyButton(sender: AnyObject) {
-        
     }
     
     func gotoProfile() {
@@ -100,7 +107,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+
     
 
     
@@ -110,6 +117,10 @@ class DetailViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "gotoProfile") {
             let vc = segue.destinationViewController as! ProfileViewController
+            vc.user = tweet!.user
+        }
+        else {
+            let vc = segue.destinationViewController as! ComposeViewController
             vc.user = tweet!.user
         }
     }
